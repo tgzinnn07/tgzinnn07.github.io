@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site de Tg Barber</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tg Barber</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --gold:#d4af37;
+  --dark:#0f0f0f;
+  --card:#1c1c1c;
+}
+
+*{box-sizing:border-box}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: var(--dark);
+  color: #fff;
+}
+
+header {
+  background: linear-gradient(90deg,#000,#222);
+  padding: 20px;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--gold);
+}
+
+.container {
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+h2, h3 { color: var(--gold); }
+
+input, select, button {
+  padding: 12px;
+  margin: 6px 0;
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+input, select { background:#2a2a2a; color:#fff }
+
+button {
+  background: var(--gold);
+  color:#000;
+  font-weight:600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover { opacity: 0.8 }
+
+.card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.hidden { display:none }
+
+ul { padding-left: 20px }
+
+.service-box{
+  display:flex;
+  justify-content:space-between;
+  background:#2a2a2a;
+  padding:10px;
+  border-radius:8px;
+  margin:5px 0;
+}
+
+footer{
+  text-align:center;
+  padding:15px;
+  margin-top:20px;
+  color:#aaa;
+}
+
+</style>
+</head>
+<body>
+
+<header>Tg Barber</header>
+
+<div class="container">
+
+<!-- LOGIN / CADASTRO -->
+<div id="auth">
+  <div class="card">
+    <h2>Login</h2>
+    <input type="text" id="loginUser" placeholder="Usuário">
+    <input type="password" id="loginPass" placeholder="Senha">
+    <button onclick="login()">Entrar</button>
+
+    <h3>Cadastro</h3>
+    <input type="text" id="registerUser" placeholder="Usuário">
+    <input type="password" id="registerPass" placeholder="Senha">
+    <button onclick="register()">Cadastrar</button>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app" class="hidden">
+
+  <div class="card">
+    <h2>Bem-vindo, <span id="userName"></span></h2>
+    <button onclick="logout()">Sair</button>
+  </div>
+
+  <!-- SERVIÇOS -->
+  <div class="card">
+    <h3>Serviços</h3>
+    <div class="service-box">Corte Masculino <span>R$ 25</span></div>
+    <div class="service-box">Barba <span>R$ 20</span></div>
+    <div class="service-box">Corte + Barba <span>R$ 40</span></div>
+  </div>
+
+  <!-- AGENDAMENTO -->
+  <div class="card">
+    <h3>Agendar</h3>
+
+    <select id="service">
+      <option value="Corte">Corte</option>
+      <option value="Barba">Barba</option>
+      <option value="Combo">Corte + Barba</option>
+    </select>
+
+    <select id="barber">
+      <option value="Talyson">Talyson Barber</option>
+    </select>
+
+    <input type="date" id="date">
+    <input type="time" id="time">
+
+    <button onclick="schedule()">Agendar</button>
+  </div>
+
+  <!-- LISTA -->
+  <div class="card">
+    <h3>Seus Agendamentos</h3>
+    <ul id="appointments"></ul>
+  </div>
+
+</div>
+
+</div>
+
+<footer>© 2026 Tg Barber - Estilo e atitude</footer>
+
+<script>
+let users = JSON.parse(localStorage.getItem("users")) || {};
+let currentUser = localStorage.getItem("currentUser");
+
+function saveUsers(){
+  localStorage.setItem("users", JSON.stringify(users));
+}
+
+function register(){
+  let u = registerUser.value;
+  let p = registerPass.value;
+
+  if(!u || !p) return alert("Preencha tudo");
+  if(users[u]) return alert("Usuário já existe");
+
+  users[u] = { password:p, appointments:[] };
+  saveUsers();
+  alert("Cadastro feito!");
+}
+
+function login(){
+  let u = loginUser.value;
+  let p = loginPass.value;
+
+  if(!users[u] || users[u].password !== p)
+    return alert("Login inválido");
+
+  currentUser = u;
+  localStorage.setItem("currentUser", u);
+  showApp();
+}
+
+function logout(){
+  localStorage.removeItem("currentUser");
+  location.reload();
+}
+
+function schedule(){
+  let s = service.value;
+  let b = barber.value;
+  let d = date.value;
+  let t = time.value;
+
+  if(!d || !t) return alert("Escolha data e hora");
+
+  let ag = `${s} com ${b} - ${d} ${t}`;
+  users[currentUser].appointments.push(ag);
+  saveUsers();
+  renderAppointments();
+}
+
+function renderAppointments(){
+  let list = document.getElementById("appointments");
+  list.innerHTML = "";
+
+  users[currentUser].appointments.forEach(a=>{
+    let li = document.createElement("li");
+    li.textContent = a;
+    list.appendChild(li);
+  });
+}
+
+function showApp(){
+  auth.classList.add("hidden");
+  app.classList.remove("hidden");
+  userName.textContent = currentUser;
+  renderAppointments();
+}
+
+if(currentUser) showApp();
+</script>
+
+</body>
+</html>
+
+</body>
+</html>
