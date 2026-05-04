@@ -1,0 +1,32 @@
+body{
+    margin: 0;
+    height: 100vh;
+    background-image:url("paisagem.png");
+    background-size: cover;
+    
+}
+h1{
+    font-family: 'Quicksand', sans-serif;
+    color: rgb(50, 221, 125);
+    font-size: 50px;
+}
+label{
+    font-size: 30px;
+    
+}
+input{
+    font-size: 18px;
+    color: rgb(55, 163, 127);
+}
+button{
+    font-size: 18px;
+    background-color:rgb(50, 221, 125);
+    color:black; 
+    border-radius: 4px;
+}
+p{
+    border-radius: 4px;
+    color: black;
+    font-size: 25px;
+}
+

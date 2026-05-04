@@ -1,0 +1,16 @@
+*{
+    box-sizing: border-box;
+    margin: 10px;
+    top: 10px;
+    align-items: center;
+
+}
+body{
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color:red;
+    color:goldenrod;
+
+}
+

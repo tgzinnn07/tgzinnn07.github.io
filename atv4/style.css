@@ -1,0 +1,13 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    top: 0;
+    justify-content: center;
+}   
+body{
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color:darkcyan;
+    color: aliceblue;
+}

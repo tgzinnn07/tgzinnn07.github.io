@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>TG-Pizzaria</title>
+</head>
+<body>
+
+<h1>TG-Pizzaria</h1>
+
+<form id="formPedido">
+
+    <label>
+        Nome:<br>
+        <input type="text" id="nome" placeholder="Informe seu nome completo" required>
+    </label>
+
+    <fieldset>
+        <legend>Ingredientes</legend>
+
+        <label><input type="checkbox" name="ingredientes" value="Queijo"> Queijo</label>
+        <label><input type="checkbox" name="ingredientes" value="Calabresa"> Calabresa</label>
+        <label><input type="checkbox" name="ingredientes" value="Cebola"> Cebola</label>
+        <label><input type="checkbox" name="ingredientes" value="Catupiry"> Catupiry</label>
+        <label><input type="checkbox" name="ingredientes" value="Tomate"> Tomate</label>
+    </fieldset>
+
+    <fieldset>
+        <legend>Tamanho da pizza</legend>
+
+        <label><input type="radio" name="tamanho" value="Pequena"> Pequena (4 fatias)</label>
+        <label><input type="radio" name="tamanho" value="Média"> Média (6 fatias)</label>
+        <label><input type="radio" name="tamanho" value="Grande"> Grande (8 fatias)</label>
+        <label><input type="radio" name="tamanho" value="Família"> Família (12 fatias)</label>
+    </fieldset>
+
+    <fieldset>
+        <legend>Tipo de massa</legend>
+        <select id="massa" required>
+            <option value="">Selecione</option>
+            <optgroup label="Massas">
+                <option value="Napolitana">Napolitana</option>
+                <option value="Romana">Romana</option>
+                <option value="Pan">Pan</option>
+                <option value="Chicago Style">Chicago Style</option>
+                <option value="Paulista">Paulista</option>
+            </optgroup>
+        </select>
+    </fieldset>
+
+    <label>
+        Endereço:<br>
+        <input type="text" id="endereco" placeholder="Informe seu endereço completo" required>
+    </label>
+
+    <br><br>
+
+    <button type="submit">Encomendar</button>
+    <button type="reset">Apagar</button>
+
+</form>
+
+<div id="listaPedidos"></div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
