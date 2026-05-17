@@ -1,0 +1,89 @@
+body{
+    height: auto;
+    background: linear-gradient(to left,darkblue,rgb(39, 115, 186))
+    
+}
+p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 35px;
+    color: rgb(255, 136, 0);
+}
+form{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+
+}
+fieldset{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 400px;
+    height: 200px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+}
+legend{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 25px;
+    color: rgb(255, 136, 0);
+    width: 400px;
+    height: 60px;
+}
+label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    color: rgb(0, 176, 26);
+}
+div#botao{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 50px;
+}
+div#cadstrar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 50px;
+
+}
+div#bnt_consultar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 50px;
+   
+}div#resultado_espera{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    color: rgb(0, 176, 26);
+}
+div#imagens{
+    display: flex;
+justify-content: center;
+align-items: center;
+justify-items: center;
+width: 800px;
+
+
+}
+img{
+    border-radius: 10%;
+    width: 90px;
+    height: 10%;
+}

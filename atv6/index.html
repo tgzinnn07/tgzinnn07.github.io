@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotérica - Caixa </title> 
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <p>Caixa tem</p>
+    <div id="imagens">
+
+    <img src="x.jpg" alt="">
+
+    </div>
+    <form id="form"> 
+        <fieldset>
+                <legend>Cadastro da fila do Caixa Tem</legend>
+                <label for="">Nome: 
+                    <input 
+                    type="text"
+                    placeholder="Informe seu nome completo: "
+                    id="nome"
+                    class="caixa_entrada"
+                    required>
+                </label>
+                    <div id="botao">
+                        <label for="normal">Normal
+                            <input 
+                            type="radio"
+                            name="tipo_atendimento"
+                            value="normal"
+                            id="normal"
+                            class="caixa_entrada"
+                            >
+                        </label>
+                        <label for="prioridade">Prioridade
+                            <input 
+                            type="radio"
+                            name="tipo_atendimento"
+                            value="prioridade"
+                            id="prioridade"
+                            class="caixa_entrada"
+                            >
+                        </label>
+                    </div>
+               <div id="cadstrar">
+                <button type="submit" id="bnt_consultar">Cadastrar</button>
+                <input type="button" id="bnt_consultar" onclick="listar()" value="Consultar">
+                </div>
+        </fieldset>
+
+
+
+    <div>
+        <fieldset>
+            <legend>Ordem da fila de espera</legend>
+            <div id="resultado_espera"></div>
+
+        </fieldset>
+
+        <br/>
+        <input type="button" id="bnt_atender" onclick="atender()" value="Atendimento">
+        
+
+        
+    </div>
+    </form>
+    <script src="script.js"></script>
+</body>
+</html>
